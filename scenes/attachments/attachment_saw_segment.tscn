@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bp7nibxul5pbw"]
+
+[ext_resource type="Texture2D" uid="uid://3e4hb38w6byq" path="res://graphics/square.png" id="2_l73pb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(8, 8)
+
+[node name="AttachmentSawSegment" type="CollisionShape2D" unique_id=1170348760]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1262899013]
+self_modulate = Color(1, 0, 0.3166666, 1)
+scale = Vector2(8, 8)
+texture = ExtResource("2_l73pb")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://by1bi462ulpmp"]
+
+[ext_resource type="Texture2D" uid="uid://dwb1uf0tni4q1" path="res://graphics/circle.png" id="1_i7dff"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+
+[node name="Cupcake" type="Area2D" unique_id=1464878592 groups=["cupcake"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1976515143]
+self_modulate = Color(0.5666666, 0, 1, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_i7dff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1656170342]
+shape = SubResource("CircleShape2D_g4v7s")

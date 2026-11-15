@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bpdqjrsdy6ykp"]
+
+[ext_resource type="Script" uid="uid://c50dyto7ofi7x" path="res://scripts/gear_select.gd" id="1_okbfi"]
+[ext_resource type="PackedScene" uid="uid://b7unxo2fwyjyh" path="res://scenes/player_container.tscn" id="1_yk3q5"]
+
+[node name="GearSelect" type="Node2D" unique_id=1259101199]
+script = ExtResource("1_okbfi")
+
+[node name="MainContainer" type="HBoxContainer" parent="." unique_id=1323702301]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerContainer0" parent="MainContainer" unique_id=983907694 instance=ExtResource("1_yk3q5")]
+process_mode = 4
+visible = false
+layout_mode = 2
+
+[node name="PlayerContainer1" parent="MainContainer" unique_id=1213805173 instance=ExtResource("1_yk3q5")]
+process_mode = 4
+visible = false
+layout_mode = 2
+id = 1
+
+[node name="PlayerContainer2" parent="MainContainer" unique_id=330603991 instance=ExtResource("1_yk3q5")]
+process_mode = 4
+visible = false
+layout_mode = 2
+id = 2
+
+[node name="PlayerContainer3" parent="MainContainer" unique_id=1691827089 instance=ExtResource("1_yk3q5")]
+process_mode = 4
+visible = false
+layout_mode = 2
+id = 3

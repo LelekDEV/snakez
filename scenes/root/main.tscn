@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dmvxhdysjb2ce"]
+
+[ext_resource type="Script" uid="uid://dkw1xn0db7xmc" path="res://scripts/main.gd" id="1_cgoxl"]
+[ext_resource type="PackedScene" uid="uid://bm0rkultgyjla" path="res://scenes/root/game.tscn" id="1_jc805"]
+[ext_resource type="PackedScene" uid="uid://bpdqjrsdy6ykp" path="res://scenes/root/gear_select.tscn" id="2_8ofnu"]
+
+[node name="Main" type="Node2D" unique_id=127641134]
+script = ExtResource("1_cgoxl")
+
+[node name="Game" parent="." unique_id=1541270371 instance=ExtResource("1_jc805")]
+visible = false
+
+[node name="GearSelect" parent="." unique_id=1259101199 instance=ExtResource("2_8ofnu")]
+position = Vector2(-240, -135)

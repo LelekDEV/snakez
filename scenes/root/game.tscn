@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bm0rkultgyjla"]
+
+[ext_resource type="Script" uid="uid://dwlslkcy54fu0" path="res://scripts/game.gd" id="1_o8yes"]
+[ext_resource type="Script" uid="uid://c7a3sceqen62p" path="res://scripts/cupcake_spawner.gd" id="2_o8yes"]
+[ext_resource type="PackedScene" uid="uid://by1bi462ulpmp" path="res://scenes/cupcake.tscn" id="3_bq78c"]
+[ext_resource type="PackedScene" uid="uid://cfrr2o67lkjo1" path="res://scenes/healthbar.tscn" id="4_1qygq"]
+
+[node name="Game" type="Node2D" unique_id=1541270371 node_paths=PackedStringArray("healthbars")]
+script = ExtResource("1_o8yes")
+healthbars = [NodePath("UI/Healthbar0"), NodePath("UI/Healthbar1"), NodePath("UI/Healthbar2"), NodePath("UI/Healthbar3")]
+
+[node name="ProjectileRoot" type="Node2D" parent="." unique_id=543103674 groups=["projectile_root"]]
+
+[node name="CupcakeRoot" type="Node2D" parent="." unique_id=531168794 groups=["cupcake_spawner"]]
+script = ExtResource("2_o8yes")
+
+[node name="Cupcake" parent="CupcakeRoot" unique_id=1464878592 instance=ExtResource("3_bq78c")]
+
+[node name="UI" type="Node2D" parent="." unique_id=845950954]
+z_index = 1
+
+[node name="Healthbar0" parent="UI" unique_id=1444030734 instance=ExtResource("4_1qygq")]
+position = Vector2(-230, -125)
+
+[node name="Healthbar1" parent="UI" unique_id=1851811871 instance=ExtResource("4_1qygq")]
+position = Vector2(110, -125)
+
+[node name="Healthbar2" parent="UI" unique_id=336775619 instance=ExtResource("4_1qygq")]
+position = Vector2(-230, 109)
+
+[node name="Healthbar3" parent="UI" unique_id=115557448 instance=ExtResource("4_1qygq")]
+position = Vector2(110, 109)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1737241151]
+editor_draw_screen = false
+
+[node name="ScreenRect" type="ReferenceRect" parent="." unique_id=1472866376]
+offset_left = -240.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = 135.0
+metadata/_edit_lock_ = true

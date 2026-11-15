@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://baw7ntm24oax6"]
+
+[ext_resource type="Script" uid="uid://clv6hf328shst" path="res://scripts/snake.gd" id="1_cvoae"]
+[ext_resource type="PackedScene" uid="uid://b3tnn2f6wblpc" path="res://scenes/snake_collision_segment.tscn" id="2_yc36x"]
+
+[node name="Snake" type="Node2D" unique_id=627505874]
+script = ExtResource("1_cvoae")
+
+[node name="Collider" type="Area2D" parent="." unique_id=949629914]
+
+[node name="CupcakeCollect" type="Area2D" parent="." unique_id=4564531]
+
+[node name="SnakeCollisionSegment" parent="CupcakeCollect" unique_id=707297017 instance=ExtResource("2_yc36x")]
+
+[node name="AttachmentRoot" type="Node" parent="." unique_id=1717345987]
+
+[connection signal="body_entered" from="Collider" to="." method="_on_collider_body_entered"]
+[connection signal="area_entered" from="CupcakeCollect" to="." method="_on_cupcake_collect_area_entered"]

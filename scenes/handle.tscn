@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cwwcpia4gbicv"]
+
+[ext_resource type="Script" uid="uid://crprl6l0mpe3y" path="res://scripts/display_handle.gd" id="1_b8o0j"]
+[ext_resource type="Texture2D" uid="uid://3e4hb38w6byq" path="res://graphics/square.png" id="1_slgp1"]
+[ext_resource type="Texture2D" uid="uid://drw7hj307f3rp" path="res://graphics/items.png" id="2_b8o0j"]
+[ext_resource type="PackedScene" uid="uid://cft2bc22ttxeq" path="res://scenes/select_outline_draw.tscn" id="3_oyl2k"]
+
+[node name="Handle" type="Control" unique_id=2082310554]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_b8o0j")
+
+[node name="HandleSprite" type="Sprite2D" parent="." unique_id=107906670]
+scale = Vector2(16, 16)
+texture = ExtResource("1_slgp1")
+centered = false
+offset = Vector2(0.5, 0.5)
+
+[node name="AttachmentSprite" type="Sprite2D" parent="." unique_id=962866718]
+texture = ExtResource("2_b8o0j")
+centered = false
+hframes = 4
+
+[node name="SelectOutlineDraw" parent="." unique_id=1346874448 instance=ExtResource("3_oyl2k")]
+size = 16.0
+is_on = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b1t57vq8ud2u"]
+
+[ext_resource type="Script" uid="uid://b0wugct1ijcfr" path="res://scripts/dummy_ai.gd" id="1_3t151"]
+
+[node name="DummyAI" type="Node" unique_id=140356356]
+script = ExtResource("1_3t151")

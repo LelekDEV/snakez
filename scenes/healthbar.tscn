@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cfrr2o67lkjo1"]
+
+[ext_resource type="Script" uid="uid://k7l6mq0wvv7q" path="res://scripts/healthbar.gd" id="1_8wl12"]
+
+[node name="Healthbar" type="Node2D" unique_id=1444030734]
+script = ExtResource("1_8wl12")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=854454579]
+offset_right = 120.0
+offset_bottom = 16.0
+border_width = 2.0

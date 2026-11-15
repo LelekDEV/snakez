@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://q6w8gaed8wpg"]
+
+[ext_resource type="Texture2D" uid="uid://dwb1uf0tni4q1" path="res://graphics/circle.png" id="1_2w072"]
+[ext_resource type="Script" uid="uid://cegxbvajsgemv" path="res://scripts/fire_projectile.gd" id="1_yx85x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 6.5
+
+[node name="FireProjectile" type="CharacterBody2D" unique_id=103870824]
+collision_mask = 0
+script = ExtResource("1_yx85x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=64410357]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_2w072")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1818983623]
+shape = SubResource("CircleShape2D_g4v7s")

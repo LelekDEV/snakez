@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cft2bc22ttxeq"]
+
+[ext_resource type="Script" uid="uid://cn4bwrv48u2e7" path="res://scripts/item_outline_draw.gd" id="1_a01nk"]
+
+[node name="SelectOutlineDraw" type="Node2D" unique_id=1346874448]
+script = ExtResource("1_a01nk")

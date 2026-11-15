@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://5y8oosiyjtt1"]
+
+[ext_resource type="Script" uid="uid://cyicglbilshu3" path="res://scripts/attachment_turret.gd" id="1_y726x"]
+[ext_resource type="Texture2D" uid="uid://3e4hb38w6byq" path="res://graphics/square.png" id="2_7oxkd"]
+
+[node name="AttachmentTurret" type="Node2D" unique_id=1874237022]
+script = ExtResource("1_y726x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1361998232]
+scale = Vector2(8, 8)
+texture = ExtResource("2_7oxkd")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=784047864]
+autostart = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
