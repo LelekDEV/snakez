@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://b0lnvl8qh21fm" path="res://scripts/player_container.gd" id="1_gv8qy"]
 [ext_resource type="Texture2D" uid="uid://chdfp3u1hk2cp" path="res://graphics/snake.png" id="2_ldo80"]
 [ext_resource type="PackedScene" uid="uid://cwwcpia4gbicv" path="res://scenes/handle.tscn" id="3_a36gw"]
+[ext_resource type="FontFile" uid="uid://bmvk2xk75ofiy" path="res://fonts/dylex_7x13b.fnt" id="5_4hg65"]
+[ext_resource type="PackedScene" uid="uid://bep3j5f4fp1fe" path="res://scenes/hold_input.tscn" id="5_a36gw"]
 
 [node name="PlayerContainer" type="ColorRect" unique_id=983907694]
 clip_contents = true
 offset_right = 120.0
-offset_bottom = 360.0
+offset_bottom = 270.0
 size_flags_horizontal = 3
 mouse_filter = 2
 color = Color(0.25, 0.25, 0.25, 1)
@@ -23,7 +25,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(0, 70)
+offset_transform_position = Vector2(0, 115)
 offset_transform_visual_only = false
 
 [node name="SnakeSprite" type="Sprite2D" parent="SnakeRoot" unique_id=1420189198]
@@ -81,3 +83,48 @@ grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
 alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1331622790]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="MedalContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1821424783]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/MedalContainer" unique_id=1099670954]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("5_4hg65")
+theme_override_font_sizes/font_size = 13
+text = "Points:
+123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReadyContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1760548606]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/ReadyContainer" unique_id=1627324100]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("5_4hg65")
+theme_override_font_sizes/font_size = 13
+text = "Not ready"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HoldInput" parent="MarginContainer/ReadyContainer" unique_id=1905347533 instance=ExtResource("5_a36gw")]
+layout_mode = 2

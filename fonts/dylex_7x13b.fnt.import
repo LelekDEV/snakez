@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bmvk2xk75ofiy"
+path="res://.godot/imported/dylex_7x13b.fnt-bffd6c4bbabb173fa0aa35d3f9df1157.fontdata"
+
+[deps]
+
+source_file="res://fonts/dylex_7x13b.fnt"
+dest_files=["res://.godot/imported/dylex_7x13b.fnt-bffd6c4bbabb173fa0aa35d3f9df1157.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=1

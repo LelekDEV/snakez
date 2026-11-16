@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://d2hdc0m3wxrw3"
+path="res://.godot/imported/mister_parodius.fnt-934ce264e502160eaab1c1a473d1e31d.fontdata"
+
+[deps]
+
+source_file="res://fonts/mister_parodius.fnt"
+dest_files=["res://.godot/imported/mister_parodius.fnt-934ce264e502160eaab1c1a473d1e31d.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=1

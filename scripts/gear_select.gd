@@ -3,6 +3,8 @@ extends Node2D
 @onready var player_containers: Array[PlayerContainer]
 
 func _ready() -> void:
+	SignalBus.end_game.connect(game_ended)
+	
 	for player_container: PlayerContainer in $MainContainer.get_children():
 		player_container.became_ready.connect(check_ready)
 		player_containers.append(player_container)
@@ -29,10 +31,13 @@ func _input(event: InputEvent) -> void:
 
 func game_ended() -> void:
 	for container in player_containers:
+		if not container.visible:
+			continue
+		
 		if container.id == Global.InputMode.DUMMY:
 			continue
 		
-		container.is_ready = false
+		container.toggle_ready()
 
 func add_player(input_id: int) -> void:
 	if input_id in Global.player_input_modes:
@@ -44,7 +49,6 @@ func add_player(input_id: int) -> void:
 	var player_container: PlayerContainer = player_containers[player_id]
 	
 	player_container.order = player_id
-	if input_id == Global.InputMode.DUMMY: player_container.is_ready = true
 	player_container.move_to_front()
 	
 	player_container.setup(input_id)

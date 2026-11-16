@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bep3j5f4fp1fe"]
+
+[ext_resource type="Script" uid="uid://bahxvgvtyqk83" path="res://scripts/hold_input.gd" id="1_0dmml"]
+[ext_resource type="Script" uid="uid://bh608qv4rvjtr" path="res://scripts/hold_input_fill_draw.gd" id="2_0baap"]
+[ext_resource type="FontFile" uid="uid://d2hdc0m3wxrw3" path="res://fonts/mister_parodius.fnt" id="2_emu5v"]
+
+[node name="HoldInput" type="Control" unique_id=1905347533]
+clip_children = 2
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_0dmml")
+
+[node name="FillDraw" type="Node2D" parent="." unique_id=1988670866]
+script = ExtResource("2_0baap")
+
+[node name="Label" type="Label" parent="." unique_id=1863728039]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.49803922)
+theme_override_fonts/font = ExtResource("2_emu5v")
+theme_override_font_sizes/font_size = 8
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 1

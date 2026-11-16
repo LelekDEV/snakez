@@ -9,6 +9,13 @@ var order: int
 @onready var item_container: HBoxContainer = $ColorRect/ItemContainer
 @onready var handles: Array[DisplayHandle] = []
 
+@onready var hold_inputs: Dictionary[StringName, HoldInput] = {
+	"ready": $MarginContainer/ReadyContainer/HoldInput
+}
+@onready var labels: Dictionary[StringName, Label] = {
+	"ready": $MarginContainer/ReadyContainer/Label
+}
+
 var selected_item: int = 0
 var selected_handle: int = 0
 
@@ -21,11 +28,20 @@ func _ready() -> void:
 	
 	for handle in handles:
 		handle.clicked.connect(handle_clicked.bind(handle))
+	
+	hold_inputs.ready.filled.connect(toggle_ready)
 
-func setup(new_id: int) -> void:
+func setup(new_id: Global.InputMode) -> void:
 	id = new_id
 	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
+	
+	for hold_input in hold_inputs.values():
+		hold_input.input_mode = new_id
+	
+	if new_id == Global.InputMode.DUMMY:
+		is_ready = true
+		labels.ready.text = "Ready (dummy)"
 	
 	Global.player_items[id] = []
 	for i in range(3):
@@ -87,6 +103,16 @@ func _process(delta: float) -> void:
 	elif id <= Global.InputMode.JOY4:
 		joy_process(delta)
 
+# TODO: find a nice and intuitive way for mouse input ui
+func toggle_ready() -> void:
+	is_ready = not is_ready
+	
+	if is_ready:
+		labels.ready.text = "Ready"
+		became_ready.emit()
+	else:
+		labels.ready.text = "Not ready"
+
 func handle_clicked(handle: DisplayHandle) -> void:
 	var items: Array[Global.AttachmentItem]
 	for display_item in item_container.get_children():
@@ -110,11 +136,6 @@ func mouse_process(delta: float) -> void:
 	
 	snake_root.offset_transform_position.y -= scroll_y * delta * 200
 	item_container.offset_transform_position.x -= scroll_x * delta * 100
-	
-	# ready (TODO: replace to be a button instead)
-	if Input.is_action_just_pressed("mouse_ready"):
-		is_ready = true#not is_ready
-		if is_ready: became_ready.emit()
 
 func joy_process(delta: float) -> void:
 	var scroll_y: float = Input.get_joy_axis(id, JOY_AXIS_LEFT_Y)
@@ -125,11 +146,6 @@ func joy_process(delta: float) -> void:
 	var items: Array[Global.AttachmentItem]
 	for display_item in item_container.get_children():
 		items.append(display_item.item)
-	
-	# ready
-	if Global.is_joy_button_just_pressed(id, JOY_BUTTON_X):
-		is_ready = true#not is_ready
-		if is_ready: became_ready.emit()
 	
 	# item next
 	if Global.is_joy_button_just_pressed(id, JOY_BUTTON_RIGHT_SHOULDER) and items:
