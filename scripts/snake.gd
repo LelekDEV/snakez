@@ -162,8 +162,9 @@ func take_damage(amount: float) -> void:
 		if not Global.round_ranking.has(player_id):
 			Global.round_ranking.append(player_id)
 		
-		death.emit()
-		queue_free()
+		if not is_queued_for_deletion():
+			death.emit()
+			queue_free()
 
 func _on_collider_body_entered(body: Node2D) -> void:
 	if body is FireProjectile:

@@ -12,6 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 16.0
 offset_bottom = 16.0
+mouse_filter = 2
 script = ExtResource("1_0dmml")
 
 [node name="FillDraw" type="Node2D" parent="." unique_id=1988670866]

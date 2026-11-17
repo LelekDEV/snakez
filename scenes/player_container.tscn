@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cwwcpia4gbicv" path="res://scenes/handle.tscn" id="3_a36gw"]
 [ext_resource type="FontFile" uid="uid://bmvk2xk75ofiy" path="res://fonts/dylex_7x13b.fnt" id="5_4hg65"]
 [ext_resource type="PackedScene" uid="uid://bep3j5f4fp1fe" path="res://scenes/hold_input.tscn" id="5_a36gw"]
+[ext_resource type="Script" uid="uid://cnihj1wn04fh5" path="res://scripts/hover_container.gd" id="5_xxsjw"]
 
 [node name="PlayerContainer" type="ColorRect" unique_id=983907694]
 clip_contents = true
@@ -121,6 +122,7 @@ size_flags_vertical = 8
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+script = ExtResource("5_xxsjw")
 
 [node name="Label" type="Label" parent="MarginContainer/RightContainer/CrateContainer" unique_id=1755869997]
 layout_mode = 2
@@ -135,11 +137,14 @@ vertical_alignment = 1
 [node name="HoldInput" parent="MarginContainer/RightContainer/CrateContainer" unique_id=1303017356 instance=ExtResource("5_a36gw")]
 layout_mode = 2
 glyph_text = "Y"
+behavior = 2
+input_action = 3
 
 [node name="ReadyContainer" type="HBoxContainer" parent="MarginContainer/RightContainer" unique_id=1760548606]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+script = ExtResource("5_xxsjw")
 
 [node name="Label" type="Label" parent="MarginContainer/RightContainer/ReadyContainer" unique_id=1627324100]
 layout_mode = 2
@@ -152,3 +157,5 @@ vertical_alignment = 1
 
 [node name="HoldInput" parent="MarginContainer/RightContainer/ReadyContainer" unique_id=1905347533 instance=ExtResource("5_a36gw")]
 layout_mode = 2
+behavior = 1
+input_action = 2

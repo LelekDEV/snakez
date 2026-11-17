@@ -11,11 +11,16 @@ var order: int
 @onready var handles: Array[DisplayHandle] = []
 
 @onready var hold_inputs: Dictionary[StringName, HoldInput] = {
-	"ready": $MarginContainer/RightContainer/ReadyContainer/HoldInput
+	"ready": $MarginContainer/RightContainer/ReadyContainer/HoldInput,
+	"crate": $MarginContainer/RightContainer/CrateContainer/HoldInput
 }
 @onready var labels: Dictionary[StringName, Label] = {
 	"ready": $MarginContainer/RightContainer/ReadyContainer/Label,
 	"points": $MarginContainer/PointsContainer/Label
+}
+@onready var containers: Dictionary[StringName, HoverContainer] = {
+	"ready": $MarginContainer/RightContainer/ReadyContainer,
+	"crate": $MarginContainer/RightContainer/CrateContainer
 }
 
 var selected_item: int = 0
@@ -32,6 +37,7 @@ func _ready() -> void:
 		handle.clicked.connect(handle_clicked.bind(handle))
 	
 	hold_inputs.ready.filled.connect(toggle_ready)
+	hold_inputs.crate.filled.connect(buy_crate)
 
 func setup(new_id: Global.InputMode) -> void:
 	id = new_id
@@ -51,6 +57,15 @@ func setup(new_id: Global.InputMode) -> void:
 	
 	update_items()
 	update_handles()
+
+func buy_crate() -> void:
+	if Global.points[player_id] < 5:
+		return
+	
+	Global.points[player_id] -= 5
+	update_points_label()
+	add_random_item()
+	update_items()
 
 func add_random_item() -> void:
 	var item := Global.AttachmentItem.new()
@@ -100,6 +115,8 @@ func _process(delta: float) -> void:
 	if not Global.player_input_modes.has(id):
 		return
 	
+	hold_inputs.crate.is_active = Global.points[player_id] >= 5
+	
 	if id == Global.InputMode.MOUSE:
 		mouse_process(delta)
 	elif id <= Global.InputMode.JOY4:
@@ -141,6 +158,10 @@ func mouse_process(delta: float) -> void:
 	
 	snake_root.offset_transform_position.y -= scroll_y * delta * 200
 	item_container.offset_transform_position.x -= scroll_x * delta * 100
+	
+	hold_inputs.ready.is_active = containers.ready.is_mouse_on
+	if hold_inputs.crate.is_active:
+		hold_inputs.crate.is_active = containers.crate.is_mouse_on
 
 func joy_process(delta: float) -> void:
 	var scroll_y: float = Input.get_joy_axis(id, JOY_AXIS_LEFT_Y)
