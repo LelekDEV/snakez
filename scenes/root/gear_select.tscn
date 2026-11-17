@@ -24,16 +24,16 @@ layout_mode = 2
 process_mode = 4
 visible = false
 layout_mode = 2
-id = 1
+player_id = 1
 
 [node name="PlayerContainer2" parent="MainContainer" unique_id=330603991 instance=ExtResource("1_yk3q5")]
 process_mode = 4
 visible = false
 layout_mode = 2
-id = 2
+player_id = 2
 
 [node name="PlayerContainer3" parent="MainContainer" unique_id=1691827089 instance=ExtResource("1_yk3q5")]
 process_mode = 4
 visible = false
 layout_mode = 2
-id = 3
+player_id = 3

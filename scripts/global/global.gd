@@ -3,6 +3,9 @@ extends Node
 const MAX_JOYS: int = 4
 const MAX_PLAYERS: int = 4
 
+var points: Array[int] = []
+var round_ranking: Array[InputMode] = []
+
 const JOY_TRIGGER_TRESHOLD: float = 0.1
 
 enum InputMode {JOY1, JOY2, JOY3, JOY4, KEYS, MOUSE, DUMMY}

@@ -20,6 +20,7 @@ var max_health: float = 100
 var health: float
 @export var healthbar: Healthbar
 
+var player_id: int
 @export var input_mode: Global.InputMode
 
 @onready var collider: Area2D = $Collider
@@ -158,6 +159,9 @@ func take_damage(amount: float) -> void:
 		healthbar.update_state(max_health, health)
 	
 	if health <= 0:
+		if not Global.round_ranking.has(player_id):
+			Global.round_ranking.append(player_id)
+		
 		death.emit()
 		queue_free()
 

@@ -30,9 +30,16 @@ func _input(event: InputEvent) -> void:
 	add_player(Global.InputMode.MOUSE)
 
 func game_ended() -> void:
+	var i: int = 0
+	for player_id in Global.round_ranking:
+		Global.points[player_id] += 3 + i * 2
+		i += 1
+	
 	for container in player_containers:
 		if not container.visible:
 			continue
+		
+		container.update_points_label()
 		
 		if container.id == Global.InputMode.DUMMY:
 			continue
@@ -43,6 +50,7 @@ func add_player(input_id: int) -> void:
 	if input_id in Global.player_input_modes:
 		return
 	
+	Global.points.append(0)
 	Global.player_input_modes.append(input_id)
 	
 	var player_id: int = Global.player_input_modes.size() - 1

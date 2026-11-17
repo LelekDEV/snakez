@@ -1,7 +1,8 @@
 extends ColorRect
 class_name PlayerContainer
 
-@export var id: int
+@export var player_id: int
+var id: int # TODO: rename to input_id
 var order: int
 
 @onready var snake_root: Control = $SnakeRoot
@@ -10,10 +11,11 @@ var order: int
 @onready var handles: Array[DisplayHandle] = []
 
 @onready var hold_inputs: Dictionary[StringName, HoldInput] = {
-	"ready": $MarginContainer/ReadyContainer/HoldInput
+	"ready": $MarginContainer/RightContainer/ReadyContainer/HoldInput
 }
 @onready var labels: Dictionary[StringName, Label] = {
-	"ready": $MarginContainer/ReadyContainer/Label
+	"ready": $MarginContainer/RightContainer/ReadyContainer/Label,
+	"points": $MarginContainer/PointsContainer/Label
 }
 
 var selected_item: int = 0
@@ -102,6 +104,9 @@ func _process(delta: float) -> void:
 		mouse_process(delta)
 	elif id <= Global.InputMode.JOY4:
 		joy_process(delta)
+
+func update_points_label() -> void:
+	labels.points.text = "Points:\n%s" % Global.points[player_id]
 
 # TODO: find a nice and intuitive way for mouse input ui
 func toggle_ready() -> void:

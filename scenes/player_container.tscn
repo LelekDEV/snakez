@@ -97,27 +97,51 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="MedalContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1821424783]
+[node name="PointsContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1821424783]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="MarginContainer/MedalContainer" unique_id=1099670954]
+[node name="Label" type="Label" parent="MarginContainer/PointsContainer" unique_id=1099670954]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("5_4hg65")
 theme_override_font_sizes/font_size = 13
 text = "Points:
-123"
+0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ReadyContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1760548606]
+[node name="RightContainer" type="VBoxContainer" parent="MarginContainer" unique_id=944079953]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="MarginContainer/ReadyContainer" unique_id=1627324100]
+[node name="CrateContainer" type="HBoxContainer" parent="MarginContainer/RightContainer" unique_id=770961191]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/RightContainer/CrateContainer" unique_id=1755869997]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("5_4hg65")
+theme_override_font_sizes/font_size = 13
+text = "Buy crate
+(5 points)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HoldInput" parent="MarginContainer/RightContainer/CrateContainer" unique_id=1303017356 instance=ExtResource("5_a36gw")]
+layout_mode = 2
+glyph_text = "Y"
+
+[node name="ReadyContainer" type="HBoxContainer" parent="MarginContainer/RightContainer" unique_id=1760548606]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/RightContainer/ReadyContainer" unique_id=1627324100]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("5_4hg65")
@@ -126,5 +150,5 @@ text = "Not ready"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HoldInput" parent="MarginContainer/ReadyContainer" unique_id=1905347533 instance=ExtResource("5_a36gw")]
+[node name="HoldInput" parent="MarginContainer/RightContainer/ReadyContainer" unique_id=1905347533 instance=ExtResource("5_a36gw")]
 layout_mode = 2

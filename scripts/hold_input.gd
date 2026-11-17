@@ -2,6 +2,9 @@ extends Control
 class_name HoldInput
 
 @onready var fill_draw: Node2D = $FillDraw
+@onready var label: Label = $Label
+
+@export var glyph_text: String = "X"
 
 var progress: float = 0
 var input_mode: Global.InputMode
@@ -11,6 +14,9 @@ signal filled
 
 func _draw() -> void:
 	draw_circle(Vector2(9, 9), 9.5, Color("#676767"))
+
+func _ready() -> void:
+	label.text = glyph_text
 
 func _process(delta: float) -> void:
 	if input_mode == Global.InputMode.MOUSE:

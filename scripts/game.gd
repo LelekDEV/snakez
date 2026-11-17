@@ -12,6 +12,8 @@ var snakes_ref: Array[Snake]
 
 func setup() -> void:
 	# TODO: consistify naming: input_mode, input_id
+	Global.round_ranking.clear()
+	
 	cupcake_root.snakes.clear()
 	alive_snakes = 0
 	
@@ -22,6 +24,7 @@ func setup() -> void:
 	for input_mode in Global.player_input_modes:
 		var snake := Snake.instantiate()
 		
+		snake.player_id = i
 		snake.input_mode = input_mode
 		snake.global_position = Vector2(cos(angle), sin(angle)) * SPAWN_DIST
 		snake.healthbar = healthbars[i]
@@ -59,4 +62,11 @@ func on_snake_death() -> void:
 	
 	if alive_snakes < 2:
 		await get_tree().create_timer(1).timeout
+		
+		for snake in snakes_ref:
+			if not snake:
+				continue
+			
+			Global.round_ranking.append(snake.player_id)
+		
 		SignalBus.end_game.emit()
